@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find vins)/launch/vins_rviz.launch" />
+  <include file="$(find vins)/../config/realsense_d435i/rs_camera.launch" />
+  <include file="$(find mavros)/launch/px4.launch" />
+  <node name="vins_estimator" pkg="vins" type="vins_node" args="$(find vins)/../config/realsense_d435i/realsense_stereo_imu_config.yaml" />
+  <node name="globalEstimator" pkg="global_fusion" type="global_fusion_node" />
+</launch>
